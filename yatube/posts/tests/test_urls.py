@@ -126,4 +126,3 @@ class PostURLTests(TestCase):
                                          )
         self.assertEqual(response.status_code, HTTPStatus.NOT_FOUND)
         self.assertTemplateUsed(response, 'core/404.html')
-        
