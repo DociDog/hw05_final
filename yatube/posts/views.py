@@ -129,6 +129,7 @@ def follow_index(request):
     page_obj = paginator.get_page(page_number)
     context = {
         'page_obj': page_obj,
+        'paginator': paginator,
     }
     return render(request, 'posts/follow.html', context)
 

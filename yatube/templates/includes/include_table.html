@@ -1,26 +1,22 @@
-{% load cache %}
-{% cache 20 index_page %}
-  <ul>
-    <li>
-      <a href="{% url 'posts:profile' post.author.username %}">Автор: {{ post.author.get_full_name }}</a>
-    </li>
-    <li>
-      Дата публикации: {{ post.pub_date|date:"d E Y" }}
-    </li>
-  </ul>
-  <ul>
-    {% include 'includes/image.html' %}
-    <li>
-      <article>
-        <p>{{ post.text }}</p>      
-      </article>
-    </li>
-    <li>
-      {% if post.group %}  
-        <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
-      {% endif %}
-      {% if not forloop.last %}<hr>{% endif %}
-    </li>
-  </ul>
-{% endcache %}
-
+<ul>
+  <li>
+    <a href="{% url 'posts:profile' post.author.username %}">Автор: {{ post.author.get_full_name }}</a>
+  </li>
+  <li>
+    Дата публикации: {{ post.pub_date|date:"d E Y" }}
+  </li>
+</ul>
+<ul>
+  {% include 'includes/image.html' %}
+  <li>
+    <article>
+      <p>{{ post.text }}</p>      
+    </article>
+  </li>
+  <li>
+    {% if post.group %}  
+      <a href="{% url 'posts:group_list' post.group.slug %}">все записи группы</a>
+    {% endif %}
+    {% if not forloop.last %}<hr>{% endif %}
+  </li>
+</ul>
